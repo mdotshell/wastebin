@@ -1,0 +1,13 @@
+Chrome,chrome
+Clouds,clouds
+Crimson Editor,crimson_editor
+Dreamweaver,dreamweaver
+GitHub,github
+IPlastic,iplastic
+Solarized Light,solarized_light
+TextMate,textmate
+Tomorrow,tomorrow
+XCode,xcode
+Kuroir,kuroir
+KatzenMilch,katzenmilch
+SQL Server,sqlserver
