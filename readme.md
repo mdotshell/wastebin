@@ -1,0 +1,1 @@
+## Wastebin - A pastebin alternative
