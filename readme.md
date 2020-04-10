@@ -1,6 +1,6 @@
 # Wastebin
 
-###$ A self-hosted pastebin alternative
+#### A self-hosted pastebin alternative
 
 Available for use at https://wastebin.io
 
