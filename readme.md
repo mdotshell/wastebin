@@ -10,6 +10,15 @@ This is the housing repository for https://wastebin.io. Please feel free to fork
 The primary editor is based on [Ace](https://ace.c9.io/) editor.
 
 
+## Features
+
+* Fully self-hosted
+* Over 100+ supported languages
+* Both light and dark themes
+* Password protected and encrypted pastes (encryption coming soon)
+* Self-destruct (coming soon)
+* Mobile friendly
+
 
 ## Installation
 The primary mode of installation is through docker. There isn't currently a docker image (check the to-do!) in the public repositories, so you'll have to build this yourself or use the following docker compose.
