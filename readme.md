@@ -1,5 +1,9 @@
 # Wastebin
-### A pastebin alternative
+
+###$ A self-hosted pastebin alternative
+
+Available for use at https://wastebin.io
+
 
 ## Information
 
@@ -18,6 +22,7 @@ The primary editor is based on [Ace](https://ace.c9.io/) editor.
 * Password protected and encrypted pastes (encryption coming soon)
 * Self-destruct (coming soon)
 * Mobile friendly
+* MIT Licensed 
 
 
 ## Installation
@@ -55,6 +60,8 @@ networks:
         external:
             name: wastebin
 ```
+
+
 ## Environment Variables
 There are a few environment variables which can be used to customize the site.
 
@@ -69,8 +76,8 @@ There are a few environment variables which can be used to customize the site.
 ## To-Do
 As stated above, this is an unfinished work. The items on this list are meant to help collaborators determine the direction of the project. Any help with UX is greatly appreciated! Any changes should try to avoid bulky libraries and stick as close to [BootStrap 4](https://getbootstrap.com/) and [Darkly](https://bootswatch.com/darkly/) bootswatch theme as possible.
 
-* Finish self-destruct functionality
-* Encrypt code at rest with password
+* Finish self-destruct functionality - in progress
+* Encrypt code at rest with password - in progress
 * Allow custom self-destruct times. With units: Minutes, Hours, Weeks, Months
 * Create Dockerfile and commit image to public repositories with docker-compose v3
 * Run container as non-root user
@@ -79,7 +86,16 @@ As stated above, this is an unfinished work. The items on this list are meant to
   * Set editor input style, such as vim, emacs, etc. It should be possible with Ace
   * Track own pastes through cookies
 * Allow for MySQL/MariaDB database types (currently sqlite)
+* Robust API for CLI ability to paste and view with password
+* Add screenshots to the readme
 
 Ideas for the distant future:
 
 * Allow code highlighting and shared notes for reviewers.
+
+
+## Contact
+
+Please leave any issues in the [issues](https://github.com/mdotshell/wastebin/issues) section.
+
+For anything else you can email me at wastebin@mdt.sh or find me in the [/r/homelab discord channel](https://www.reddit.com/r/homelab/comments/fdy483/rhomelab_discord/)
