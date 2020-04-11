@@ -1,14 +1,11 @@
-<center>
-    
-## Wastebin  
-    
-#### A self-hosted pastebin alternative
-    
+<p align="center">
+<h1>Wastebin</h1>
+<br>
+<h4>A self-hosted pastebin alternative</h4>
+<br>
 https://wastebin.io
-
-![Imgur](https://i.imgur.com/p6ZMC6b.png)    
-    
-</center>
+<img src="https://i.imgur.com/p6ZMC6b.png" align="center">
+</p>
 
 ## Features
 
@@ -27,14 +24,12 @@ https://wastebin.io
 
 Please feel free to fork or contribute! This is still in early development, so it is a work-in-progress. 
 
-The primary editor is based on [Ace](https://ace.c9.io/).
+The primary editor is based on [Ace](https://ace.c9.io/) editor.
 
 
 
 ## Installation
 The primary mode of installation is through docker. There isn't currently a docker image (check the to-do!) in the public repositories, so you'll have to build this yourself, use the following docker compose, or move to your own webserver.
-
-Submit all pull-requests to the `dev` branch.
 
 First clone the repository:
 
