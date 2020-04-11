@@ -10,6 +10,7 @@
 ## Features
 
 * Fully self-hosted
+* Anonymous
 * Over 100+ supported languages
 * Both light and dark themes
 * Password protected and encrypted pastes (encryption coming soon)
@@ -86,6 +87,7 @@ As stated above, this is an unfinished work. The items on this list are meant to
 * Allow for MySQL/MariaDB database types (currently sqlite)
 * Robust API for CLI ability to paste and view with password
 * Add screenshots to the readme
+* Add auto-code type detection
 
 Ideas for the distant future:
 
