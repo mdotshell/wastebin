@@ -1,4 +1,3 @@
-
 ## Wastebin
 
 #### A self-hosted pastebin alternative</h5><br>
@@ -24,14 +23,12 @@
 
 Please feel free to fork or contribute! This is still in early development, so it is a work-in-progress. 
 
-The primary editor is based on [Ace](https://ace.c9.io/).
+The primary editor is based on [Ace](https://ace.c9.io/) editor.
 
 
 
 ## Installation
 The primary mode of installation is through docker. There isn't currently a docker image (check the to-do!) in the public repositories, so you'll have to build this yourself, use the following docker compose, or move to your own webserver.
-
-Submit all pull-requests to the `dev` branch.
 
 First clone the repository:
 
