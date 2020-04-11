@@ -85,6 +85,7 @@ As stated above, this is an unfinished work. The items on this list are meant to
 * Robust API for CLI ability to paste and view with password
 * Add screenshots to the readme
 * Add auto-code type detection
+* Add admin-only pastes so that users can only view pastes
 
 Ideas for the distant future:
 
