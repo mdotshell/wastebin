@@ -1,18 +1,14 @@
-# Wastebin
-
+<center>
+    
+## Wastebin  
+    
 #### A self-hosted pastebin alternative
+    
+https://wastebin.io
 
-Available for use at https://wastebin.io
-
-
-## Information
-
-This is the housing repository for https://wastebin.io. Please feel free to fork or contribute! This is still in early development, so it is a work-in-progress.
-
-**Current Version:** 1.0
-
-The primary editor is based on [Ace](https://ace.c9.io/) editor.
-
+![Imgur](https://i.imgur.com/p6ZMC6b.png)    
+    
+</center>
 
 ## Features
 
@@ -25,8 +21,18 @@ The primary editor is based on [Ace](https://ace.c9.io/) editor.
 * MIT Licensed 
 
 
+## Information
+
+**Current Version:** 1.0
+
+Please feel free to fork or contribute! This is still in early development, so it is a work-in-progress. 
+
+The primary editor is based on [Ace](https://ace.c9.io/) editor.
+
+
+
 ## Installation
-The primary mode of installation is through docker. There isn't currently a docker image (check the to-do!) in the public repositories, so you'll have to build this yourself or use the following docker compose.
+The primary mode of installation is through docker. There isn't currently a docker image (check the to-do!) in the public repositories, so you'll have to build this yourself, use the following docker compose, or move to your own webserver.
 
 First clone the repository:
 
@@ -34,7 +40,7 @@ First clone the repository:
  git clone https://github.com/mdotshell/wastebin.git
 ```
 
-Next, bring up with `docker-compose`
+Next, add service to your `docker-compose.yml` or root of your web server.
 ```
 version: "2"
 services:
@@ -48,17 +54,10 @@ services:
             - BRAND_NAME=WASTEBIN
             - BRAND_PHRASE=Because all my code is trash
             - PAGE_TITLE=WASTEBIN
-        networks:
-            - wastebin
         restart: unless-stopped
         ports:
             - "8080:80"
         command: /bin/bash -c 'a2enmod rewrite; apache2-foreground'
-
-networks:
-    wastebin
-        external:
-            name: wastebin
 ```
 
 
@@ -67,8 +66,8 @@ There are a few environment variables which can be used to customize the site.
 
 | Variable Name | Required | Default | Description |
 |---|---|---|---|
-| BASE_URL | true | https://wastebin.io | Establishes the root path used for all asset generation |
-| BRAND_NAME | false | WASTEBIN | To set the brand name on the far-left of the menu bar |
+| BASE_URL | true | https://wastebin.io | Sets the root URL for the site |
+| BRAND_NAME | false | WASTEBIN | Used to set the brand name on the far-left of the menu bar |
 | BRAND_PHRASE | false | Because all my code is trash | Used to set the phrase. If you wish to have no phrase you will need to specify it as "" |
 | PAGE_TITLE | false | WASTEBIN | Used to set the value of the `<title>` html tag | 
 
