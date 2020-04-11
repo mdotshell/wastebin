@@ -76,7 +76,7 @@
                 
                 <ul class="nav navbar-nav col-md-2 m-2 m-sm-2 m-md-0">
                     <li class="nav-item active" style="width:100%" >
-                        <select class="selectpicker" name="language" id="languageSelect" data-style="btn-success" data-width="100%" data-live-search="true">
+                        <select class="selectpicker" name="language" id="languageSelect" data-style="btn-secondary" data-width="100%" data-live-search="true">
                             <optgroup label="Common Languages">
                                 <?php
                                     if(!($unlocked)){
@@ -152,7 +152,7 @@
                 <ul class="nav navbar-nav col-md-2 m-2 m-sm-2 m-md-0">
                     <li class="nav-item active" style="width:100%">
                         <div class="form-inline" id="selfDestruct" >
-                            <select class="selectpicker shadow" disabled placeholder="Password"data-width="100%" name="expire_time" id="expire" data-style="bg-white" >
+                            <select class="selectpicker shadow"  placeholder="Password"data-width="100%" disabled name="expire_time" id="expire" data-style="bg-white" >
                                     <option value='Never' data-icon="fa-heart">Self Destruct After</option>";
                                     <optgroup label="Minutes">
                                         <option value='15 Minutes'>15 Minutes</option>";
