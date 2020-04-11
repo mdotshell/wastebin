@@ -1,14 +1,9 @@
-<center>
-    
-## Wastebin  
-    
-#### A self-hosted pastebin alternative
-    
-https://wastebin.io
-
-![Imgur](https://i.imgur.com/p6ZMC6b.png)    
-    
-</center>
+<p style="text-align: center;">
+<h2>Wastebin</h2><br>
+A self-hosted pastebin alternative<br>
+<a href="https://wastebin.io">https://wastebin.io</a><br>
+<img src="https://i.imgur.com/p6ZMC6b.png" align="center">
+</p>
 
 ## Features
 
