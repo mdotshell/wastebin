@@ -1,7 +1,7 @@
 <h2 align="center">Wastebin</h2><br>
-<span align="center">A self-hosted pastebin alternative</span><br>
-<span align="center"><a href="https://wastebin.io">https://wastebin.io</a></span><br>
-<span align="center"><img src="https://i.imgur.com/p6ZMC6b.png"></span>
+<h5 align="center">A self-hosted pastebin alternative</h5><br>
+<h5 align="center"><a href="https://wastebin.io">https://wastebin.io</a></h5><br>
+<img src="https://i.imgur.com/p6ZMC6b.png" align="center">
 
 ## Features
 
