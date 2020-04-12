@@ -46,7 +46,18 @@ class Pastes extends CI_Controller {
 	    	if(!empty($this->input->post('unlockPassword')) || $this->input->post('unlockPassword') !== null ){
 	        	$data['unlocked'] = false;
         		$data['paste'] = $this->pastes_model->get_paste($pasteID);
+        		
+        		#Verify and decrypt code
 	    		if(password_verify ($data['paste']['SALT'].$this->input->post('unlockPassword'),$data['paste']['PASSWORD'])){
+	    			
+	    			#Decrypt the code
+	    			$code = $data['paste']['CODE'];
+	    			list($code, $enc_iv) = explode("::", $code);;
+					$cipher_method = 'aes-256-ctr';
+					$enc_key = openssl_digest($this->input->post('unlockPassword'), 'SHA256', TRUE);
+					$data['paste']['CODE'] = openssl_decrypt($code, $cipher_method, $enc_key, 0, hex2bin($enc_iv));
+
+					#Unlock the paste
 	    			$data['unlocked'] = true;
             	}
 
@@ -56,13 +67,11 @@ class Pastes extends CI_Controller {
 	    	// It was posted to, but unlockPassword was not set, validate and create new entry
 	    	else {
 			    $this->form_validation->set_message('valid_base64', 'You must enter some code before submitting');
-
-			    $this->form_validation->set_rules('language', 'Language', 'trim|required|alpha_dash|max_length[20]|encode_php_tags');
-			    $this->form_validation->set_rules('theme','Theme','trim|required|alpha_dash|max_length[20]|encode_php_tags');
+			    $this->form_validation->set_rules('language', 'Language', 'trim|required|alpha_dash|max_length[25]|encode_php_tags');
+			    $this->form_validation->set_rules('theme','Theme','trim|required|alpha_dash|max_length[25]|encode_php_tags');
 			    $this->form_validation->set_rules('code','Code','required|valid_base64');
 			    $this->form_validation->set_rules('expire_time','Self Destruct','trim|alpha_numeric_spaces|max_length[20]|encode_php_tags');
 			    $this->form_validation->set_rules('password','Password','min_length[5]|max_length[20]|encode_php_tags');
-			    
 			    $this->form_validation->set_message('valid_base64', 'You must enter some code before submitting');
 
 			    

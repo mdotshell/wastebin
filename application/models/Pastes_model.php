@@ -18,14 +18,29 @@
             $this->load->helper('common_functions');
             
             if(!(empty($this->input->post('password')))){
+                
+                #Encrypt the password
                 $salt = generateRandomString(10);
                 $saltedPassword = $salt . $this->input->post('password');
                 $password = password_hash($saltedPassword, PASSWORD_DEFAULT);
+                
+                #Encrypt the code
+                if(!empty($this->input->post('code'))){
+                    $code = $this->input->post('code');
+                    $cipher_method = 'aes-256-ctr';
+                    $enc_key = openssl_digest($this->input->post('password'), 'SHA256', TRUE);
+                    $enc_iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length($cipher_method));
+                    $code = openssl_encrypt($code, $cipher_method, $enc_key, 0, $enc_iv) . "::" . bin2hex($enc_iv);
+                    //unset($code, $cipher_method, $enc_key, $enc_iv);
+                }
             }
             else {
                 $password = '';
                 $salt = '';
+                $code = htmlspecialchars($this->input->post('code'));
             }
+            
+            
             if($this->input->post('expire_time') == "Never"){
                 $expire_date = "";
             }
@@ -38,7 +53,7 @@
                 'THEME' => $this->input->post('theme'), 
                 'PASSWORD' => $password, 
                 'SALT' => $salt, 
-                'CODE' => htmlspecialchars($this->input->post('code')),
+                'CODE' => $code,
                 'SUBMIT_TIME' =>  date("Y-m-d H:i"),
                 'EXPIRE_TIME' => $expire_date
             );

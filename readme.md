@@ -12,7 +12,7 @@
 * Anonymous
 * Over 100+ supported languages
 * Both light and dark themes
-* Password protected and encrypted pastes (encryption coming soon)
+* Password protected and encrypted pastes
 * Self-destruct (coming soon)
 * Mobile friendly
 * MIT Licensed 
@@ -29,7 +29,7 @@ The primary editor is based on [Ace](https://ace.c9.io/) editor.
 
 
 ## Installation
-The primary mode of installation is through docker. There isn't currently a docker image (check the to-do!) in the public repositories, so you'll have to build this yourself, use the following docker compose, or move to your own webserver.
+The primary mode of installation is through docker. There isn't currently a docker image (check the roadmap) in the public repositories, so you'll have to build this yourself, use the following docker compose, or move to your own webserver.
 
 First clone the repository:
 
@@ -69,11 +69,11 @@ There are a few environment variables which can be used to customize the site.
 | PAGE_TITLE | false | WASTEBIN | Used to set the value of the `<title>` html tag | 
 
 
-## To-Do
+## Feature Roadmap
 As stated above, this is an unfinished work. The items on this list are meant to help collaborators determine the direction of the project. Any help with UX is greatly appreciated! Any changes should try to avoid bulky libraries and stick as close to [BootStrap 4](https://getbootstrap.com/) and [Darkly](https://bootswatch.com/darkly/) bootswatch theme as possible.
 
 * Finish self-destruct functionality - in progress
-* Encrypt code at rest with password - in progress
+* ~~Encrypt code at rest with password~~ - complete
 * Allow custom self-destruct times. With units: Minutes, Hours, Weeks, Months
 * Create Dockerfile and commit image to public repositories with docker-compose v3
 * Run container as non-root user
