@@ -41,11 +41,11 @@
             }
             
             
-            if($this->input->post('expire_time') == "Never"){
-                $expire_date = "";
+            if(is_numeric($this->input->post('expireNumber'))){
+                $expire_date = date("Y-m-d H:i", strtotime("+".$this->input->post('expireNumber').$this->input->post('expireUnit')));
             }
             else{
-                $expire_date = date("Y-m-d H:i", strtotime("+".$this->input->post('expire_time')));
+                $expire_date = "";
             }
             $data = array(
                 'PASTE_ID' => $pasteID,

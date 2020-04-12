@@ -70,7 +70,8 @@ class Pastes extends CI_Controller {
 			    $this->form_validation->set_rules('language', 'Language', 'trim|required|alpha_dash|max_length[25]|encode_php_tags');
 			    $this->form_validation->set_rules('theme','Theme','trim|required|alpha_dash|max_length[25]|encode_php_tags');
 			    $this->form_validation->set_rules('code','Code','required|valid_base64');
-			    $this->form_validation->set_rules('expire_time','Self Destruct','trim|alpha_numeric_spaces|max_length[20]|encode_php_tags');
+			    $this->form_validation->set_rules('expireNumber','Expire Time','trim|numeric|max_length[4]|encode_php_tags');
+			    $this->form_validation->set_rules('expireUnit','Expire Unit','in_list[minutes,hours,days,weeks,months]|max_length[7]|encode_php_tags');
 			    $this->form_validation->set_rules('password','Password','min_length[5]|max_length[20]|encode_php_tags');
 			    $this->form_validation->set_message('valid_base64', 'You must enter some code before submitting');
 
