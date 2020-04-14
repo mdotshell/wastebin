@@ -67,16 +67,16 @@ There are a few environment variables which can be used to customize the site.
 As stated above, this is an unfinished work. The items on this list are meant to help collaborators determine the direction of the project. Any help with UX is greatly appreciated! Any changes should try to avoid bulky libraries and stick as close to [BootStrap 4](https://getbootstrap.com/) and [Darkly](https://bootswatch.com/darkly/) bootswatch theme as possible.
 
 * Finish self-destruct functionality - in progress
-* ~~Encrypt code at rest with password~~
-* ~~Allow custom self-destruct times. With units: Minutes, Hours, Weeks, Months~~
-* ~~Create Dockerfile and Docker-compose~~
+* ~~Encrypt code at rest with password~~ - complete
+* ~~Allow custom self-destruct times. With units: Minutes, Hours, Weeks, Months~~ - complete
+* ~~Create Dockerfile and Docker-compose~~ - complete
 * Push image to public repositories
 * Run container as non-root user
 * Create a settings menu with the following abilities:
   * Adjust font-size
   * Set editor input style, such as vim, emacs, etc. It should be possible with Ace
   * Track own pastes through cookies
-* ~~Move to MySQL back-end~~
+* ~~Move to MySQL back-end~~ - complete
 * Robust API for CLI ability to paste and view with password
 * Update screenshots to the readme
 * Add auto-code type detection
