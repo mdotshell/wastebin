@@ -55,7 +55,7 @@ There are a few environment variables which can be used to customize the site.
 | BRAND_NAME | false | WASTEBIN | Used to set the brand name on the far-left of the menu bar |
 | BRAND_PHRASE | false | Because all my code is trash | Used to set the phrase. If you wish to have no phrase you will need to specify it as "" |
 | PAGE_TITLE | false | WASTEBIN | Used to set the value of the `<title>` html tag |
-| MYSQL_HOST | true | Points to `wastebin`  | Used to set the location of the database host |
+| MYSQL_HOST | true | Points to wastebin  | Used to set the location of the database host |
 | MYSQL_DATABASE | true | wastebin | Specify the name of the database to be connected to. Should be the same on both containers |
 | MYSQL_PORT | true | 3306 | The port the database is listening on |
 | MYSQL_USER | true | wastebin | Username used to connect to the db container. Should be the same on both containers |

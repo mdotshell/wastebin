@@ -1,46 +1,43 @@
 version: "3.7"
 services:
-  wastebin-dev:
+  wastebin:
     build: .
-    container_name: wastebin-dev
+    container_name: wastebin
     environment:
-      BASE_URL: https://dev.wastebin.io
-      BRAND_NAME: WASTEBIN-DEV
-      BRAND_PHRASE: For Development
-      PAGE_TITLE: WASTEBIN-DEV
-      MYSQL_HOST: wastebin-dev-db
+      BASE_URL: https://wastebin.io
+      BRAND_NAME: WASTEBIN
+      BRAND_PHRASE: Because all my code is trash
+      PAGE_TITLE: WASTEBIN
+      MYSQL_HOST: wastebin-db
       MYSQL_PORT: 3306
       MYSQL_DATABASE: wastebin
       MYSQL_USER: wastebin
       MYSQL_PASSWORD: wastebin
     networks:
-      - wastebin-dev
+      - wastebin
     volumes:
       - ./app:/var/www/html
     restart: unless-stopped
     depends_on:
-      - wastebin-dev-db
-   
+      - wastebin-db
+    ports:
+      - 8888:80
 
-  wastebin-dev-db:
-    container_name: wastebin-dev-db
+  wastebin-db:
+    container_name: wastebin-db
     image: mariadb:10.5.2-bionic
-    restart: always
     networks:
-      - wastebin-dev
+      - wastebin
     environment:
-      MYSQL_ROOT_PASSWORD: wastebinmysqlroot
+      MYSQL_ROOT_PASSWORD: SuperSecretRootPassword
       MYSQL_DATABASE: wastebin
       MYSQL_USER: wastebin
       MYSQL_PASSWORD: wastebin
     volumes:
       - ./db:/var/lib/mysql
-    expose:
-      - 3306
-    ports:
-      - 33306:3306
+    restart: unless-stopped
       
 networks:
-  wastebin-dev:
+  wastebin:
     external:
-      name: wastebin-dev
+      name: wastebin
