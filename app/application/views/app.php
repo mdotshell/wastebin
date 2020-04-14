@@ -13,7 +13,7 @@
         
         <!-- Custom -->
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/custom/custom.css">
-        
+
         <!-- Bootstrap-select -->
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-select/bootstrap-select-1.13.12.min.css">
         <script src="<?php echo base_url(); ?>assets/js/bootstrap-select/bootstrap-select-1.13.12.min.js"></script>
@@ -21,6 +21,9 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+        
+        
+
         
         <script>var base_url = '<?php echo base_url() ?>';</script>
     </head>
@@ -57,6 +60,29 @@
             </div>
         </div>
         
+        
+        <!-- Not found modal -->
+        <div class="modal fade" id="notfoundModal" tabindex="-1" role="dialog" aria-labelledby="notfoundModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header  bg-danger">
+                        <h5 class="modal-title" id="notfoundModalTitle">Oh no!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        This paste could not be found
+                    </div>
+                    <div class="modal-footer d-block">
+                        <div class="text-center">
+                            <a href="/" class="btn btn-info active" role="button" aria-pressed="true">Close</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         </form>
         
         <!-- Navbar -->
@@ -70,10 +96,6 @@
             </button>
     
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                
-                
-                
-                
                 <ul class="nav navbar-nav col-md-2 m-2 m-sm-2 m-md-0">
                     <li class="nav-item active" style="width:100%" >
                         <select class="selectpicker" name="language" id="languageSelect" data-style="btn-secondary" data-width="100%" data-live-search="true">
@@ -111,7 +133,6 @@
                     </li>
                 </ul>
                 
-        
                 <ul class="nav navbar-nav col-md-2 m-2 m-sm-2 mr-md-auto">
                         <li class="nav-item active" style="width:100%">
                         <!-- Theme drop-down -->
@@ -148,29 +169,20 @@
                     </li>
                 </ul>
                 
-                <!-- SETTINGS TEST -->
-                <ul class="nav navbar-nav col-md-2 m-2 m-sm-2 m-md-0">
-                    <li class="nav-item active" style="width:100%">
-                        <div class="form-inline" id="selfDestruct" >
-                            <select class="selectpicker shadow"  placeholder="Password"data-width="100%" disabled name="expire_time" id="expire" data-style="bg-white" >
-                                    <option value='Never' data-icon="fa-heart">Self Destruct After</option>";
-                                    <optgroup label="Minutes">
-                                        <option value='15 Minutes'>15 Minutes</option>";
-                                        <option value='30 Minutes'>30 Minutes</option>";
-                                        <option value='45 Minutes'>45 Minutes</option>";
-                                    </optgroup>
-                                    <optgroup label="Hours">
-                                        <option value='1 Hour'>1 Hour</option>";
-                                        <option value='3 Hours'>3 Hours</option>";
-                                        <option value='6 Hours'>6 Hours</option>";
-                                        <option value='12 Hours'>12 Hours</option>";
-                                    </optgroup>
-                                    <optgroup label="Days">
-                                        <option value='1 Day'>1 Day</option>";
-                                        <option value='7 Days'>7 Days</option>";
-                                        <option value='30 Days'>30 Days</option>";
-                                    </optgroup>
-                            </select>
+                <!-- SETTINGS -->
+                 <ul class="nav navbar-nav col-md-3 m-2 m-sm-2 m-md-0 mr-md-0">
+                     <li class="nav-item active w-100">
+                        <div class="form-inline" id="selfDestruct">
+                            <div class="form-group form-group-xs w-100 ml-auto">
+                                <input type="number" class="form-control w-50 m-sm-0 shadow" placeholder="Self Destruct In" id="expireNumber" name="expireNumber">
+                                <select class=" shadow ml-0 w-50 form-control" data-width="100%" name="expireUnit" id="expire" data-style="bg-white">
+                                    <option value="minutes">Minutes</option>";
+                                    <option value="hours">Hours</option>";
+                                    <option value="days">Days</option>";
+                                    <option value="days">Weeks</option>";
+                                    <option value="months">Months</option>";
+                                </select>
+                            </div>
                         </div>
                     </li>
                 </ul>
@@ -179,7 +191,7 @@
                     <li class="nav-item active w-100">
                         <div class="form-inline" id="passwordForm">
                             <div class="form-group w-100">
-                                <input type="password" class="form-control w-100 shadow" placeholder="Password" id="password" name="password">
+                                <input type="password" class="form-control w-100 shadow" placeholder="Set Password" id="password" name="password">
                             </div>
                         </div>
                     </li>
@@ -193,12 +205,7 @@
             </div>
         </nav>
         
-        
-        
-        
-        
-        
-        
+
         <?php echo form_open('pastes/app'); ?>
         <!-- Content -->
         <div class="container-fluid">
@@ -212,6 +219,12 @@
                         }
                         else if($unlocked){
                             echo("<script>$('#editor').text(atob('".$paste['CODE']."'));</script>");
+                        }
+                    ?>
+                    
+                    <?php
+                        if($notfound){
+                          echo "<script>$('#notfoundModal').modal()</script>"; 
                         }
                     ?>
                     

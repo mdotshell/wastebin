@@ -75,11 +75,12 @@ $query_builder = TRUE;
 
 $db['wastebin'] = array(
     'dsn'      => '',
-    'hostname' => '',
-    'username' => '',
-    'password' => '',
-    'database' => './application/database/wastebin.db',
-    'dbdriver' => 'sqlite3',
+    'hostname' => getenv("MYSQL_HOST") ? $_ENV["MYSQL_HOST"]:"wastebin",
+    'port'     => getenv("MYSQL_PORT") ? $_ENV["MYSQL_PORT"]:"3306",
+    'username' => getenv("MYSQL_USER") ? $_ENV["MYSQL_USER"]:"wastebin",
+    'password' => getenv("MYSQL_PASSWORD") ? $_ENV["MYSQL_PASSWORD"]:"wastebin",
+    'database' => getenv("MYSQL_DATABASE") ? $_ENV["MYSQL_DATABASE"]:"wastebin",
+    'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
     'db_debug' => (ENVIRONMENT !== 'production'),

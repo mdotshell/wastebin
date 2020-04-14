@@ -5,12 +5,10 @@
         }
         
         public function get_paste($pasteID = FALSE){
-            if($pasteID === FALSE){
-                $query = $this->db->get('PASTES');
-                return $query->result_array();
-            }
-            
             $query = $this->db->get_where('PASTES', array('PASTE_ID' => $pasteID));
+            if(empty($query->row_array())){
+                return false;
+            }
             return $query->row_array();
         }
         
@@ -18,19 +16,34 @@
             $this->load->helper('common_functions');
             
             if(!(empty($this->input->post('password')))){
+                
+                #Encrypt the password
                 $salt = generateRandomString(10);
                 $saltedPassword = $salt . $this->input->post('password');
                 $password = password_hash($saltedPassword, PASSWORD_DEFAULT);
+                
+                #Encrypt the code
+                if(!empty($this->input->post('code'))){
+                    $code = $this->input->post('code');
+                    $cipher_method = 'aes-256-ctr';
+                    $enc_key = openssl_digest($this->input->post('password'), 'SHA256', TRUE);
+                    $enc_iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length($cipher_method));
+                    $code = openssl_encrypt($code, $cipher_method, $enc_key, 0, $enc_iv) . "::" . bin2hex($enc_iv);
+                    //unset($code, $cipher_method, $enc_key, $enc_iv);
+                }
             }
             else {
                 $password = '';
                 $salt = '';
+                $code = htmlspecialchars($this->input->post('code'));
             }
-            if($this->input->post('expire_time') == "Never"){
-                $expire_date = "";
+            
+            
+            if(is_numeric($this->input->post('expireNumber'))){
+                $expire_date = date("Y-m-d H:i:s", strtotime("+".$this->input->post('expireNumber').$this->input->post('expireUnit')));
             }
             else{
-                $expire_date = date("Y-m-d H:i", strtotime("+".$this->input->post('expire_time')));
+                $expire_date = "";
             }
             $data = array(
                 'PASTE_ID' => $pasteID,
@@ -38,8 +51,8 @@
                 'THEME' => $this->input->post('theme'), 
                 'PASSWORD' => $password, 
                 'SALT' => $salt, 
-                'CODE' => htmlspecialchars($this->input->post('code')),
-                'SUBMIT_TIME' =>  date("Y-m-d H:i"),
+                'CODE' => $code,
+                'SUBMIT_TIME' =>  date("Y-m-d H:i:s"),
                 'EXPIRE_TIME' => $expire_date
             );
            

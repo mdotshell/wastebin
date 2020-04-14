@@ -9,10 +9,11 @@
 ## Features
 
 * Fully self-hosted
+* Anonymous
 * Over 100+ supported languages
 * Both light and dark themes
-* Password protected and encrypted pastes (encryption coming soon)
-* Self-destruct (coming soon)
+* Password protected and encrypted pastes
+* Custom Self-destruct timers (coming soon)
 * Mobile friendly
 * MIT Licensed 
 
@@ -28,7 +29,9 @@ The primary editor is based on [Ace](https://ace.c9.io/) editor.
 
 
 ## Installation
-The primary mode of installation is through docker. There isn't currently a docker image (check the to-do!) in the public repositories, so you'll have to build this yourself, use the following docker compose, or move to your own webserver.
+The primary mode of installation is through docker. There isn't currently a docker image (check the roadmap) in the public repositories, so you'll have to build this yourself, use the following docker compose.
+
+You can also clone to any existing PHP server and set the environment variables below. Both the php-mysqli and apache2-rewrite mods will need to be installed/enabled.
 
 First clone the repository:
 
@@ -36,25 +39,11 @@ First clone the repository:
  git clone https://github.com/mdotshell/wastebin.git
 ```
 
-Next, add service to your `docker-compose.yml` or root of your web server.
-```
-version: "2"
-services:
-    wastebin:
-        container_name: wastebin
-        image: 'php:7.4.1-apache-buster'
-        volumes:
-            - '.:/var/www/html'
-        environment:
-            - BASE_URL=https://wastebin.io
-            - BRAND_NAME=WASTEBIN
-            - BRAND_PHRASE=Because all my code is trash
-            - PAGE_TITLE=WASTEBIN
-        restart: unless-stopped
-        ports:
-            - "8080:80"
-        command: /bin/bash -c 'a2enmod rewrite; apache2-foreground'
-```
+Then build with
+
+`cd ./wastebin && docker-compose up -d`
+
+
 
 
 ## Environment Variables
@@ -65,24 +54,34 @@ There are a few environment variables which can be used to customize the site.
 | BASE_URL | true | https://wastebin.io | Sets the root URL for the site |
 | BRAND_NAME | false | WASTEBIN | Used to set the brand name on the far-left of the menu bar |
 | BRAND_PHRASE | false | Because all my code is trash | Used to set the phrase. If you wish to have no phrase you will need to specify it as "" |
-| PAGE_TITLE | false | WASTEBIN | Used to set the value of the `<title>` html tag | 
+| PAGE_TITLE | false | WASTEBIN | Used to set the value of the `<title>` html tag |
+| MYSQL_HOST | true | Points to wastebin  | Used to set the location of the database host |
+| MYSQL_DATABASE | true | wastebin | Specify the name of the database to be connected to. Should be the same on both containers |
+| MYSQL_PORT | true | 3306 | The port the database is listening on |
+| MYSQL_USER | true | wastebin | Username used to connect to the db container. Should be the same on both containers |
+| MYSQL_PASSWORD | true | wastebin | Password used to connect to the db container. Should be the same on both containers |
 
 
-## To-Do
+
+## Feature Roadmap
 As stated above, this is an unfinished work. The items on this list are meant to help collaborators determine the direction of the project. Any help with UX is greatly appreciated! Any changes should try to avoid bulky libraries and stick as close to [BootStrap 4](https://getbootstrap.com/) and [Darkly](https://bootswatch.com/darkly/) bootswatch theme as possible.
 
 * Finish self-destruct functionality - in progress
-* Encrypt code at rest with password - in progress
-* Allow custom self-destruct times. With units: Minutes, Hours, Weeks, Months
-* Create Dockerfile and commit image to public repositories with docker-compose v3
+* ~~Encrypt code at rest with password~~
+* ~~Allow custom self-destruct times. With units: Minutes, Hours, Weeks, Months~~
+* ~~Create Dockerfile and Docker-compose~~
+* Push image to public repositories
 * Run container as non-root user
 * Create a settings menu with the following abilities:
   * Adjust font-size
   * Set editor input style, such as vim, emacs, etc. It should be possible with Ace
   * Track own pastes through cookies
-* Allow for MySQL/MariaDB database types (currently sqlite)
+* ~~Move to MySQL back-end~~
 * Robust API for CLI ability to paste and view with password
-* Add screenshots to the readme
+* Update screenshots to the readme
+* Add auto-code type detection
+* Add admin-only pastes so that users can only view pastes
+* Add "Share" functionality to email paste link and password to recipient
 
 Ideas for the distant future:
 
