@@ -1,0 +1,22 @@
+Ambiance,ambiance
+Chaos,chaos
+Clouds Midnight,clouds_midnight
+Dracula,dracula
+Cobalt,cobalt
+Gruvbox,gruvbox
+Green on Black,gob
+Idle Fingers,idle_fingers
+KrTheme,kr_theme
+Merbivore,merbivore
+Merbivore Soft,merbivore_soft
+Mono Industrial,mono_industrial
+Monokai,monokai
+Pastel on dark,pastel_on_dark
+Solarized Dark,solarized_dark
+Terminal,terminal
+Tomorrow Night,tomorrow_night
+Tomorrow Night Blue,tomorrow_night_blue
+Tomorrow Night Bright,tomorrow_night_bright
+Tomorrow Night 80s,tomorrow_night_eighties
+Twilight,twilight
+Vibrant Ink,vibrant_ink
