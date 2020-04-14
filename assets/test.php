@@ -1,1 +1,0 @@
-echo(['BASE_URL']);
