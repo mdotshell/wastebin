@@ -204,11 +204,13 @@
                 </ul>
             </div>
         </nav>
+
         
 
         <?php echo form_open('pastes/app'); ?>
         <!-- Content -->
         <div class="container-fluid">
+            
             <div class="row">
                 <div class="col-sm-12" id="editor_column">
                      <!-- Show the code if $unlocked is true -->

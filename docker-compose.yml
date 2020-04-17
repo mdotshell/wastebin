@@ -33,6 +33,7 @@ services:
       MYSQL_DATABASE: wastebin
       MYSQL_USER: wastebin
       MYSQL_PASSWORD: wastebin
+    command: '--event_scheduler=ON'
     volumes:
       - ./db:/var/lib/mysql
     restart: unless-stopped

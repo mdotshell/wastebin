@@ -11,7 +11,15 @@ body {
         top:0;
         left:0;
         right:0;
+        bottom: 0px;
+}
+
+.bottom-settings {
+        position:fixed;
         bottom:0px;
+        right:0px;
+        background-color: orange;
+        color: black;
 }
     
 .brand-name {
