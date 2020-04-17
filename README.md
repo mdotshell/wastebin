@@ -13,7 +13,7 @@
 * Over 100+ supported languages
 * Admin-only pastes (optional) - Users can view, but not submit without entering a password
 * Both light and dark themes
-* Lock Pastes with a password
+* Lock pastes with a password
 * Code encryption at rest
 * Custom Self-destruct timers
 * Mobile friendly
