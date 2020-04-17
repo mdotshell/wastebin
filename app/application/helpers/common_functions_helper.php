@@ -12,16 +12,3 @@ if ( ! function_exists('generateRandomString'))
         return $random;
     }
 }
-
-if ( ! function_exists('validatePostData'))
-{
-    function validatePostData() {
-        $invalidPost = false;
-        $language = $this->input->post('language');
-        $theme = $this->input->post('theme');
-        $password = (empty($this->input->post('password')) ? "" : $this->input->post('password'));
-        $code = $this->input->post('code');
-        $expire_time = (empty($this));
-        
-    }
-}

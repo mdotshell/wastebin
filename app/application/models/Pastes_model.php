@@ -29,7 +29,6 @@
                     $enc_key = openssl_digest($this->input->post('password'), 'SHA256', TRUE);
                     $enc_iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length($cipher_method));
                     $code = openssl_encrypt($code, $cipher_method, $enc_key, 0, $enc_iv) . "::" . bin2hex($enc_iv);
-                    //unset($code, $cipher_method, $enc_key, $enc_iv);
                 }
             }
             else {
@@ -38,9 +37,10 @@
                 $code = htmlspecialchars($this->input->post('code'));
             }
             
-            
+            # If it's numeric, then create the expire date object and the removal DB event
             if(is_numeric($this->input->post('expireNumber'))){
                 $expire_date = date("Y-m-d H:i:s", strtotime("+".$this->input->post('expireNumber').$this->input->post('expireUnit')));
+                $this->db->query("CREATE EVENT IF NOT EXISTS remove_".$pasteID." ON SCHEDULE AT '".$expire_date."' ON COMPLETION NOT PRESERVE DO DELETE FROM PASTES WHERE PASTE_ID = '".$pasteID."'");
             }
             else{
                 $expire_date = "";
