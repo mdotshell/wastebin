@@ -40,5 +40,4 @@ services:
       
 networks:
   wastebin:
-    external:
-      name: wastebin
+    name: wastebin
